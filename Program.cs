@@ -18,6 +18,7 @@ namespace Quest
             Hat shinyHat = new();
             shinyHat.ShininessLevel = 6;
 
+Prize prize = new Prize("1 gold coin"); 
 
             Console.Write("What is your name?");
             string userName = Console.ReadLine().Trim();
@@ -99,6 +100,7 @@ namespace Quest
 
             while (true)
             {
+                prize.ShowPrize(theAdventurer);
                 Console.WriteLine("Do you wish to take on the challenge again? (Y/N): ");
                 string repeatQuest = Console.ReadLine().ToLower().Trim();
                 if (repeatQuest == "y")
