@@ -13,18 +13,21 @@ namespace Quest
         public int Awesomeness { get; set; }
 
         public Robe ColorfulRobe { get; }
+
+        public Hat ShinyHat {get;}
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name, Robe colorfulRobe)
+        public Adventurer(string name, Robe colorfulRobe, Hat theHat)
         {
             Name = name;
             Awesomeness = 50;
             ColorfulRobe = colorfulRobe;
+            ShinyHat = theHat;
         }
 
 
         public string GetDescription()
         {
-            return $"{Name} is wearing a {ColorfulRobe.Length} inch {string.Join(", ", ColorfulRobe.Colors)} robe";
+            return $"{Name} is wearing a {ColorfulRobe.Length} inch {string.Join(", ", ColorfulRobe.Colors)} robe and a {ShinyHat.ShininessDescription} hat";
         }
 
         // This method returns a string that describes the Adventurer's status
