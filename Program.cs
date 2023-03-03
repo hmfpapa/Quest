@@ -12,13 +12,13 @@ namespace Quest
         {
 
             Robe theRobe = new();
-            theRobe.Colors = new List<string>() {"purple", "yellow"};
-            theRobe.Length = 69; 
+            theRobe.Colors = new List<string>() { "purple", "yellow" };
+            theRobe.Length = 69;
 
             Hat shinyHat = new();
             shinyHat.ShininessLevel = 6;
 
-Prize prize = new Prize("1 gold coin"); 
+            Prize prize = new Prize("gold coin");
 
             Console.Write("What is your name?");
             string userName = Console.ReadLine().Trim();
@@ -51,6 +51,14 @@ Prize prize = new Prize("1 gold coin");
                     4, 20
                 );
 
+                Challenge petNumber = new Challenge("How many pets do I have?", 5, 20);
+                Challenge bestSeason = new Challenge(@"Which is the best season? 
+1) Spring 
+2) Summer 
+3) Fall 
+4) Winter",
+                2, 25);
+
                 // "Awesomeness" is like our Adventurer's current "score"
                 // A higher Awesomeness is better
 
@@ -63,6 +71,7 @@ Prize prize = new Prize("1 gold coin");
                 // Make a new "Adventurer" object using the "Adventurer" class
 
 
+
                 // A list of challenges for the Adventurer to complete
                 // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
                 List<Challenge> challenges = new List<Challenge>()
@@ -71,11 +80,25 @@ Prize prize = new Prize("1 gold coin");
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                petNumber,
+                bestSeason,
             };
 
+                List<Challenge> chosenChallenges = new List<Challenge>() { };
+
+                while (chosenChallenges.Count < 5)
+                {
+                int newRandom = new Random().Next(0, 6);
+                    if (!chosenChallenges.Contains(challenges[newRandom]))
+                    {
+                        chosenChallenges.Add(challenges[newRandom]);
+                    }
+                };
+
+
                 // Loop through all the challenges and subject the Adventurer to them
-                foreach (Challenge challenge in challenges)
+                foreach (Challenge challenge in chosenChallenges)
                 {
                     challenge.RunChallenge(theAdventurer);
                 }
